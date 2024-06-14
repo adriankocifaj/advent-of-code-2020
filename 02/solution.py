@@ -1,22 +1,20 @@
-
-
 # problem: https://adventofcode.com/2020/day/2
 
 
-def read_file(file_name: str, data: list) -> None:
+def read_file(file_name: str, data: list[tuple[int, int, str, str]]) -> None:
     with open(file_name, 'r') as file:
         for line in file:
-            parts: list = line.strip().split(" ")
-            numbers: list = parts[0].split("-")
+            parts: list[str] = line.strip().split(" ")
+            numbers: list[str] = parts[0].split("-")
 
             minimum: int = int(numbers[0])
             maximum: int = int(numbers[1])
             character: str = parts[1][:len(parts) - 2]
             string: str = parts[2]
-            data.append(tuple((minimum, maximum, character, string)))
+            data.append((minimum, maximum, character, string))
 
 
-def first_star(data: list) -> int:
+def first_star(data: list[tuple[int, int, str, str]]) -> int:
     valid: int = 0
 
     for minimum, maximum, character, string in data:
@@ -28,7 +26,7 @@ def first_star(data: list) -> int:
     return valid
 
 
-def second_star(data: list) -> int:
+def second_star(data: list[tuple[int, int, str, str]]) -> int:
     valid: int = 0
 
     for i, j, character, string in data:
@@ -39,7 +37,7 @@ def second_star(data: list) -> int:
 
 
 if __name__ == '__main__':
-    data: list = list()
+    data: list[tuple[int, int, str, str]] = list()
     file_name: str = "input.txt"
     read_file(file_name, data)
 
